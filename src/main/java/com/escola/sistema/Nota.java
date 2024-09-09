@@ -1,6 +1,7 @@
 package com.escola.sistema;
 
 
+
 public class Nota {
     private Disciplina disciplina;
     private double valor;
