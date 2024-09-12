@@ -1,47 +1,68 @@
 package com.escola.sistema;
 
-import java.util.List;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class SistemaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaApplication.class, args);
-
-		Professor professor = new Professor("Arthur", "12345678910", "Ciências");
-
-		Disciplina portugues = new Disciplina("Portugues", professor);
-
-
-		Aluno aluno1 = new Aluno("Rafael Freire", "15582754963", "0001");
-		Aluno aluno2 = new Aluno("Luis Filipe", "07555384792", "0002");
-
-		portugues.adicionarAluno(aluno1);
-        portugues.adicionarAluno(aluno2);
-
-		
-		Nota nota1 = new Nota(portugues, 8.5);
-        Nota nota2 = new Nota(portugues, 9.5);
-
-		aluno1.adicionarNota(nota1);
-        aluno2.adicionarNota(nota2);
-
-		System.out.println("Disciplina: "+ portugues.getNome());
-        System.out.println("Professor: "+ portugues.getProfessor().getNome());
-
-		List<Aluno> alunos = portugues.getAlunos();
         
-		for (Aluno aluno : alunos) {
-            System.out.println("Aluno: " + aluno.getNome() + " - Matrícula: " + aluno.getMatricula());
-            
-			List<Nota> notas = aluno.getNota();
-            for (Nota nota : notas) {
-                System.out.println("Nota na disciplina " + nota.getDisciplina().getNome() + ": " + nota.getValor());
-            }
-	}
-	}
+        		//MENU
+		Scanner scanner = new Scanner(System.in);
+        int opcao;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Mostrar professores da instituição.");
+            System.out.println("2. Mostrar alunos matriculados.");
+            System.out.println("3. Matricular aluno.");
+			System.out.println("4. Contratar professor.");
+			System.out.println("5. Adicionar disciplina.");
+			System.out.println("6- Listar disciplinas ");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
 
+            switch (opcao) {
+                case 1:
+				    Professor.mostrarProfessores();
+
+					break;
+                case 2:
+					Aluno.mostrarAlunos();
+                
+                    break;
+                
+                case 3:
+                    Aluno.matricularAluno();            
+                    break;
+				
+                case 4:
+                    Professor.contratarProfessor();
+            
+                    break;
+                    case 5:
+                    Disciplina.adicionarDisciplina();
+                
+                    break;	
+				case 6:
+                    Disciplina.mostrarDisciplinas();
+                    
+                    break;	
+				case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
 }
