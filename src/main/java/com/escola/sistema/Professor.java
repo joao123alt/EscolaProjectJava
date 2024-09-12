@@ -59,4 +59,23 @@ public Professor(String materia, String nome , String cpf){
         return "Nome: " + getNome() + ", Cpf: " + getCpf() + ", Matéria: " + getMateria();
     }     
     
-}
+    public static void menuProfessor(){
+        Scanner menuProfessor = new Scanner(System.in);    
+        System.out.println("MENU PROFESSOR:");
+        System.out.println("1. Adicionar nota");
+        System.out.println("2. Remover conceito");
+        System.out.println("3. Ver notas ");
+        System.out.println("0. Sair ");
+        int opcao = menuProfessor.nextInt();
+
+
+        menuProfessor.close();
+        }
+    
+    public static void adicionarNota(){}
+    public static void removerConteito(){}
+    public static void listarNotas(){}
+
+        
+
+    }

@@ -66,5 +66,5 @@ import java.util.Scanner;
         public String getInfo(){
         return "Nome: " + getNome() + ", Cpf: " + getProfessor() ;
     }     
-    
+        
     }

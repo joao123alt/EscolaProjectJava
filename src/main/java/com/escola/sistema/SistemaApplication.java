@@ -13,6 +13,8 @@ public class SistemaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaApplication.class, args);
         
+        
+        Aluno.alimentaAluno();
         		//MENU
 		Scanner scanner = new Scanner(System.in);
         int opcao;

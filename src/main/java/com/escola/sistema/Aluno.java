@@ -2,8 +2,7 @@ package com.escola.sistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Aluno extends Pessoa{
     private String matricula;
@@ -17,6 +16,8 @@ public class Aluno extends Pessoa{
         super(nome, cpf);
         this.matricula = matricula;
         this.notas = new ArrayList<>();
+        this.turma = turma;
+        this.turno = turno;
 
     }
    // Getts e sets da classe
@@ -157,12 +158,24 @@ public class Aluno extends Pessoa{
     }     
     
     public void menuAluno(){
-
+    Scanner menuAluno = new Scanner(System.in);    
+    System.out.println("MENU ALUNO:");
+    System.out.println("1. Atualização cadastral");
+    System.out.println("2. Listar Cadastro");
+    System.out.println("3. Ver notas");
+    System.out.println("0. Sair ");
+    int opcao = menuAluno.nextInt();
+    
+    
     }
     public void verDados(){
 
     }
     public void verBoletim(){
 
+    }
+
+    public static void alimentaAluno(){
+        Aluno aluno = new Aluno("Joao", "1111111111", "001", Turno.MANHA, Turma.TURMA1);
     }
 }
