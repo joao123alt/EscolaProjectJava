@@ -1,20 +1,17 @@
 package com.escola.sistema;
 
+import java.util.HashMap;
 
 public class Nota {
     private Disciplina disciplina;
     private double valor;
-
+    private 
     public Nota(Disciplina disciplina, double valor){
         this.disciplina = disciplina;
         this.valor = valor;
     }
 
-    public Nota(){
-        
-    }
-
-    public Disciplina getDisciplina() {
+     public Disciplina getDisciplina() {
         return disciplina;
     }
 
@@ -29,4 +26,9 @@ public class Nota {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public static void adicionarNota(){
+
+    }
+
 }

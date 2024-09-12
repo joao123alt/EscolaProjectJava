@@ -1,7 +1,7 @@
 package com.escola.sistema;
 
 
-public class Pessoa {
+ abstract public class Pessoa {
     protected String nome;
     protected String cpf; 
 

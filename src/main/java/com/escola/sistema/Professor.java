@@ -3,6 +3,7 @@ package com.escola.sistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.zip.Adler32;
 
 public class Professor extends Pessoa {
     private String materia;
@@ -61,21 +62,50 @@ public Professor(String materia, String nome , String cpf){
     
     public static void menuProfessor(){
         Scanner menuProfessor = new Scanner(System.in);    
-        System.out.println("MENU PROFESSOR:");
-        System.out.println("1. Adicionar nota");
-        System.out.println("2. Remover conceito");
-        System.out.println("3. Ver notas ");
-        System.out.println("0. Sair ");
-        int opcao = menuProfessor.nextInt();
+        int opcao;
 
+        do {
+            System.out.println("MENU PROFESSOR:");
+            System.out.println("1. Adicionar nota");
+            System.out.println("2. Remover conceito");
+            System.out.println("3. Ver notas");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = menuProfessor.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    Nota.adicionarNota();                    
+                    break;
+                case 2:
+                    removerConteito();
+                    break;
+                case 3:
+                    listarNotas();
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+                    break;
+            }
+        } while (opcao != 0);
 
         menuProfessor.close();
         }
     
-    public static void adicionarNota(){}
     public static void removerConteito(){}
     public static void listarNotas(){}
 
-        
+    public void addNota(){
+        Scanner addNota = new Scanner(System.in);
 
+        System.out.println("Digite o cpf do aluno para atribuir uma nota: ");
+        String cpfAluno = addNota.nextLine();
+        
+          
+
+        }
     }
+    
