@@ -4,30 +4,46 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.print.DocFlavor.STRING;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class Aluno extends Pessoa {
-
+public class Aluno extends Pessoa   {
+    // Atributos
     private String matricula;
     private Turno turno;
     private Turma turma;
-    private HashMap<String, Double> notas = new HashMap<>();
-     static List<Aluno> alunos = new ArrayList<>();
 
-    
+    private String login;
+    private String senha;
+
+    // Colections
+    public static List<Aluno> alunos = new ArrayList<>();
 
     // Construtor
-    public Aluno(String nome, String cpf, String matricula, Turno turno, Turma turma) {
+    public Aluno(String nome, String cpf, String matricula, Turno turno, Turma turma, String senha) {
         super(nome, cpf);
         this.matricula = matricula;
+        this.login = matricula;
+        this.senha = senha;
         this.turma = turma;
         this.turno = turno;
 
     }
     // Getts e sets da classe
+    
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getNome() {
         return nome;
@@ -85,8 +101,11 @@ public class Aluno extends Pessoa {
         String cpfaluno = matricula.nextLine();
         System.out.println("Digite o nome do aluno: ");
         String nomealuno = matricula.nextLine();
+
         System.out.println("Digite a matrícula do aluno: ");
         String matriculaaluno = matricula.nextLine();
+        System.out.println("Crie a senha do aluno: ");
+        String senhaaluno = matricula.nextLine();
 
         Turno turnoaluno = null;
         while (turnoaluno == null) {
@@ -129,7 +148,7 @@ public class Aluno extends Pessoa {
 
         // Instancia um novo aluno
 
-        Aluno aluno = new Aluno(cpfaluno, nomealuno, matriculaaluno, turnoaluno, turmaaluno);
+        Aluno aluno = new Aluno(cpfaluno, nomealuno, matriculaaluno, turnoaluno, turmaaluno, senhaaluno);
         alunos.add(aluno);
 
         // Confirmação de matricula
@@ -156,6 +175,7 @@ public class Aluno extends Pessoa {
                 + ", Turma: " + turma;
     }
 
+    // Voltar pra terminar Remover aluno
     public static void removerAluno() {
         for (int i = 0; i < alunos.size(); i++) {
             Pessoa p = alunos.get(i);
@@ -172,75 +192,79 @@ public class Aluno extends Pessoa {
 
     }
 
-    public static void atualizarCadastro() {
+    public static void alimentaAluno() {
+        Aluno aluno = new Aluno("Joao", "1111111111", "001", Turno.MANHA, Turma.TURMA1, "1234");
+        Aluno aluno2 = new Aluno("Pedro", "1111111111", "001", Turno.MANHA, Turma.TURMA1, "1234");
+        Aluno aluno3 = new Aluno("Lucas", "1111111111", "001", Turno.MANHA, Turma.TURMA1, "1324");
+        alunos.add(aluno);
+        alunos.add(aluno2);
+        alunos.add(aluno3);
 
     }
+    
 
     // Métodos Aluno menu
-    public void menuAluno(){
-    Scanner menuAluno = new Scanner(System.in);    
-    System.out.println("MENU ALUNO:");
-    
-    System.out.println("1. Atualização cadastral");
+    public static void menuAluno() {
+        Scanner menuAluno = new Scanner(System.in);
+        System.out.println("MENU ALUNO:");
 
-    System.out.println("2. Listar Cadastro");
+        System.out.println("1. Alterar a senha");
 
-    System.out.println("3. Ver notas");
+        System.out.println("2. Listar Cadastro");
 
-    System.out.println("0. Sair ");
-    int opcao = menuAluno.nextInt();
-    
-    switch (opcao) {
-        case 1:
-                             
-            break;
-        case 2:
+        System.out.println("3. Ver notas");
 
-            break;
-        case 3:
-    
-            break;
-        case 0:
-            System.out.println("Saindo...");
-            break;
-        default:
-            System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
-            break;
-    }
-while(opcao!=0);
+        System.out.println("0. Sair ");
+        int opcao = menuAluno.nextInt();
+
+        switch (opcao) {
+            case 1:
+                System.out.println("-Alterar a senha ");    
+                break;
+            case 2:
+                System.out.println("-Ver dados cadastrais ");    
+
+                break;
+            case 3:
+                System.out.println("-Ver boletim ");    
+
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+                break;
+        }
+        while (opcao != 0)
+            ;
 
         menuAluno.close();
 
     }
 
-    public void verDados(){
 
-    }
+    // Métodos do Menu aluno
 
-    public void verBoletim(){
+    public static void mostrarBoletim(Aluno aluno) {
+        
+        for (Nota n : Nota.notas) {
+            if (n.getAluno().getNome().equals(aluno.getNome())) {
+                System.out.println("Disciplina:" + n.getDisciplina().getNome() + " nota: " + n.getValor());
 
-    }
-
-    public static void alimentaAluno(){
-        Aluno aluno = new Aluno("Joao", "1111111111", "001", Turno.MANHA, Turma.TURMA1);
-    }
-
-    // Adicionar notas
-
-    public void adicionarNota(String materia, Double nota){
-        notas.put(materia, nota);
-    }
-
-    public void listarNotas(){
-            System.out.println("Nota do aluno "+ getNome() + ":");
-            for(Map.Entry<String, Double> entry:notas.entrySet()){
-                System.out.println("Matéria: "+ entry.getKey() + "Nota: " + entry.getValue());    
             }
+        }
     }
-    public Map<String, Double> getNotas(){
-        return notas;        
+
+    public static void mostrarDados(Aluno aluno){
+
+        for (Aluno a : Aluno.alunos) {
+            if (a.getNome().equals(aluno.getNome())) {
+                System.out.println("Nome: " + a.getNome() + " Cpf: " + a.getCpf()+ " Matricula: "+ a.getMatricula() +" Turno: "+ a.getTurno() + " Turma: " + a.getTurma() + " Login: " + a.getLogin() + " Senha: " + a.getSenha());
+
+            }
+        }
     }
+
+        
 }
-
-
-

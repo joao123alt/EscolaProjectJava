@@ -3,8 +3,6 @@ package com.escola.sistema;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -14,56 +12,86 @@ public class SistemaApplication {
         SpringApplication.run(SistemaApplication.class, args);
 
         Aluno.alimentaAluno();
-        // MENU
-        Scanner scanner = new Scanner(System.in);
+        Disciplina.alimentaDisciplina();
+        Nota.alimentaNota();
+
+        int tentativas = 3;
+        Professor professorLogado = null;
+        Aluno alunoLogado = null;
+
+
+       
+    while (tentativas>0) {
+        Scanner telaInicial = new Scanner(System.in);
         int opcao;
         do {
-            System.out.println("Menu:");
-            System.out.println("1. Mostrar professores da instituição.");
-            System.out.println("2. Mostrar alunos matriculados.");
-            System.out.println("3. Matricular aluno.");
-            System.out.println("4. Contratar professor.");
-            System.out.println("5. Adicionar disciplina.");
-            System.out.println("6- Listar disciplinas ");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
+
+            System.out.println("----TELA INICIAL----");
+            System.out.println("Escolha como prosseguir:");
+            System.out.println("1- Efetuar Login");
+            System.out.println("2- Sair");
+            opcao = telaInicial.nextInt();
 
             switch (opcao) {
                 case 1:
-                    Professor.mostrarProfessores();
 
+                    // Login
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("=====Login=====");
+                    System.out.println("Insira o seu usuario: ");
+                    String user = scanner.nextLine();
+                    System.out.println("Insira a sua senha: ");
+                    String password = scanner.nextLine();
+
+                   
+                    
+                    boolean loginSuccessfulAluno = false;
+                    boolean loginSuccessfulProfessor = false;
+
+                    for (Aluno aluno : Aluno.alunos) {
+                        if (aluno.getLogin().equals(user) && aluno.getSenha().equals(password)) {
+                            loginSuccessfulAluno = true;
+                            alunoLogado = aluno;
+                        }
+
+                    }
+
+                    for (Professor professor : Professor.professores) {
+                        if (professor.getLogin().equals(user) && professor.getSenha().equals(password)) {
+                            loginSuccessfulProfessor = true;
+                            professorLogado = professor;
+
+                        } 
+                    }
+
+
+
+                    if (loginSuccessfulAluno == true) {
+                        System.out.println("Seja bem vindo!");
+                        Aluno.menuAluno();
+                    } else if (loginSuccessfulProfessor == true) {
+                        System.out.println("Seja bem vindo!");
+                        Professor.menuProfessor();
+                    } else {
+                        System.out.println("Usuário ou senha incorretos.");
+                    }
                     break;
                 case 2:
-                    Aluno.mostrarAlunos();
-
-                    break;
-
-                case 3:
-                    Aluno.matricularAluno();
-                    break;
-
-                case 4:
-                    Professor.contratarProfessor();
-
-                    break;
-                case 5:
-                    Disciplina.adicionarDisciplina();
-
-                    break;
-                case 6:
-                    Disciplina.mostrarDisciplinas();
-
-                    break;
-                case 0:
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
                     break;
             }
-        } while (opcao != 0);
 
-        scanner.close();
+        } while (opcao != 0);
+    
+        
+    }
+    
+    }
+
+    public boolean autorizarCredenciais(){
+
     }
 }

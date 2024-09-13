@@ -3,65 +3,87 @@ package com.escola.sistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.zip.Adler32;
 
 public class Professor extends Pessoa {
     private String materia;
-    private static List<Professor> professores = new ArrayList<>();
+    
+    private String login;
+    private String senha;
+    
+    public static List<Professor> professores = new ArrayList<>();
 
-
-//Construtor professor
-public Professor(String materia, String nome , String cpf){
+    // Construtor professor
+    public Professor(String materia, String nome, String cpf) {
+        super(nome,cpf);
         this.materia = materia;
         this.nome = nome;
         this.cpf = cpf;
     }
-    //Getters and Sets Professor
-            public String getMateria() {
-                return materia;
-            }
-            public void setMateria(String materia) {
-                this.materia = materia;
+
+    public String getLogin() {
+        return login;
     }
-    //Métodos da Classe
 
-    public static void contratarProfessor(){
-        //Requisições ao usuario
-                Scanner scannerprofessor = new Scanner(System.in);
-                    System.out.println("==========PROCESSO DE CONTRATAÇÃO==========");
-                System.out.print("Digite o CPF do professor: "); 
-                    String cpfprocessor = scannerprofessor.nextLine();
-                System.out.print("Digite o nome do professor: ");
-                    String nomeprofessor = scannerprofessor.nextLine();
-                System.out.print("Digite a materia do professor: ");
-                    String materiaprofessor = scannerprofessor.nextLine();
-               
-
-                        //Instncia um novo professor
-                Professor professor = new Professor(cpfprocessor,nomeprofessor, materiaprofessor );
-                professores.add(professor);
-
-                        //Confirma que deu certo
-                        
-                System.out.println("Professor contratado com sucesso!");
-                System.out.println("CPF: " + professor.getCpf());
-                System.out.println("Nome: " + professor.getNome());
-				System.out.println("Nome: " + professor.getMateria());
+    public void setLogin(String login) {
+        this.login = login;
     }
-    public static void mostrarProfessores(){
-       
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    // Getters and Sets Professor
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+    // Métodos da Classe
+
+    public static void contratarProfessor() {
+        // Requisições ao usuario
+        Scanner scannerprofessor = new Scanner(System.in);
+        System.out.println("==========PROCESSO DE CONTRATAÇÃO==========");
+        System.out.print("Digite o CPF do professor: ");
+        String cpfprocessor = scannerprofessor.nextLine();
+        System.out.print("Digite o nome do professor: ");
+        String nomeprofessor = scannerprofessor.nextLine();
+        System.out.print("Digite a materia do professor: ");
+        String materiaprofessor = scannerprofessor.nextLine();
+
+        // Instncia um novo professor
+        Professor professor = new Professor(cpfprocessor, nomeprofessor, materiaprofessor);
+        professores.add(professor);
+
+        // Confirma que deu certo
+
+        System.out.println("Professor contratado com sucesso!");
+        System.out.println("CPF: " + professor.getCpf());
+        System.out.println("Nome: " + professor.getNome());
+        System.out.println("Nome: " + professor.getMateria());
+    }
+
+    public static void mostrarProfessores() {
+
         System.out.println("==========LISTA DE ALUNOS MATRICULADOS==========");
-        for (Professor p: professores) {
+        for (Professor p : professores) {
             System.out.println(p.getInfo());
         }
-    
-}
-    public String getInfo(){
+
+    }
+
+    public String getInfo() {
         return "Nome: " + getNome() + ", Cpf: " + getCpf() + ", Matéria: " + getMateria();
-    }     
-    
-    public static void menuProfessor(){
-        Scanner menuProfessor = new Scanner(System.in);    
+    }
+
+    public static void menuProfessor() {
+        Scanner menuProfessor = new Scanner(System.in);
         int opcao;
 
         do {
@@ -75,13 +97,12 @@ public Professor(String materia, String nome , String cpf){
 
             switch (opcao) {
                 case 1:
-                    Nota.adicionarNota();                    
+                    Nota.adicionarNota();
                     break;
                 case 2:
-                    removerConteito();
                     break;
                 case 3:
-                    listarNotas();
+                    
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -93,19 +114,8 @@ public Professor(String materia, String nome , String cpf){
         } while (opcao != 0);
 
         menuProfessor.close();
-        }
-    
-    public static void removerConteito(){}
-    public static void listarNotas(){}
-
-    public void addNota(){
-        Scanner addNota = new Scanner(System.in);
-
-        System.out.println("Digite o cpf do aluno para atribuir uma nota: ");
-        String cpfAluno = addNota.nextLine();
-        
-          
-
-        }
     }
-    
+    //Login
+     //Login
+          
+}

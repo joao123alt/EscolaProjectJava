@@ -7,7 +7,7 @@ import java.util.Scanner;
         private String nome;
         private String professor;
         private List<Aluno> alunos;
-        private static List<Disciplina> disciplinas= new ArrayList<>();		
+        public static List<Disciplina> disciplinas= new ArrayList<>();		
 
 
         public Disciplina(String nome, String professor) {
@@ -66,5 +66,15 @@ import java.util.Scanner;
         public String getInfo(){
         return "Nome: " + getNome() + ", Cpf: " + getProfessor() ;
     }     
-        
+    public static void alimentaDisciplina() {
+        Disciplina disciplina = new Disciplina("Geografia", "Arnaldo");
+        Disciplina disciplina2 = new Disciplina("Matematica", "Rodolfo");
+        Disciplina disciplina3 = new Disciplina("Historia", "Arthur");
+        disciplinas.add(disciplina);
+        disciplinas.add(disciplina2);
+        disciplinas.add(disciplina3);
+
+
+
+    }
     }
