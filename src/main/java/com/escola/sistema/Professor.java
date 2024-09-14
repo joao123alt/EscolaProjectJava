@@ -89,6 +89,9 @@ public class Professor extends Pessoa {
         do {
             System.out.println("MENU PROFESSOR:");
             System.out.println("1. Adicionar nota");
+            System.out.println("2. Adicionar aluno");
+            System.out.println("3. Voltar ");
+
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = menuProfessor.nextInt();
@@ -97,9 +100,16 @@ public class Professor extends Pessoa {
                 case 1:
                     Nota.adicionarNota();
                     break;
-        
+                case 2:
+                    Aluno.matricularAluno();
+                    break;
+                case 3:
+                System.out.println("-Voltando... ");
+                SistemaApplication.menuPrincipal();
+                break;
                 case 0:
                     System.out.println("Saindo...");
+                    
                     break;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha uma opção válida.");

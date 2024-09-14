@@ -15,6 +15,11 @@ public class SistemaApplication {
         Disciplina.alimentaDisciplina();
         Nota.alimentaNota();
 
+        menuPrincipal();
+        
+    }
+    public static void menuPrincipal(){
+
         Scanner sc = new Scanner(System.in);
         int opcao;
 
@@ -48,6 +53,5 @@ public class SistemaApplication {
             }
         } while (opcao != 0);
 
-    }
-
+    }    
 }

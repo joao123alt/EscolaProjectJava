@@ -212,7 +212,8 @@ public class Aluno extends Pessoa {
 
         System.out.println("2. Listar Cadastro");
 
-  
+        System.out.println("3. Voltar menu principal");
+
         System.out.println("0. Sair ");
          opcao = menuAluno.nextInt();
 
@@ -225,6 +226,10 @@ public class Aluno extends Pessoa {
                 System.out.println("-Ver dados cadastrais ");
                 mostrarDados();
                 break;
+            case 3:
+                System.out.println("-Voltando... ");
+                SistemaApplication.menuPrincipal();
+                break;    
          
             case 0:
                 System.out.println("Saindo...");
