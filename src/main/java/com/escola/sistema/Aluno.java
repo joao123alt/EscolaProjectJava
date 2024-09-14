@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Aluno extends Pessoa   {
+public class Aluno extends Pessoa {
     // Atributos
     private String matricula;
     private Turno turno;
@@ -27,7 +27,6 @@ public class Aluno extends Pessoa   {
 
     }
     // Getts e sets da classe
-    
 
     public String getLogin() {
         return login;
@@ -201,34 +200,32 @@ public class Aluno extends Pessoa   {
         alunos.add(aluno3);
 
     }
-    
 
     // Métodos Aluno menu
     public static void menuAluno() {
-        Scanner menuAluno = new Scanner(System.in);
+        int opcao;
+        do{
+            Scanner menuAluno = new Scanner(System.in);
         System.out.println("MENU ALUNO:");
 
-        System.out.println("1. Alterar a senha");
+        System.out.println("1. Ver notas");
 
         System.out.println("2. Listar Cadastro");
 
-        System.out.println("3. Ver notas");
-
+  
         System.out.println("0. Sair ");
-        int opcao = menuAluno.nextInt();
+         opcao = menuAluno.nextInt();
 
         switch (opcao) {
             case 1:
-                System.out.println("-Alterar a senha ");    
+                System.out.println("-Ver boletim ");
+                mostrarBoletim();
                 break;
             case 2:
-                System.out.println("-Ver dados cadastrais ");    
-
+                System.out.println("-Ver dados cadastrais ");
+                mostrarDados();
                 break;
-            case 3:
-                System.out.println("-Ver boletim ");    
-
-                break;
+         
             case 0:
                 System.out.println("Saindo...");
                 break;
@@ -236,35 +233,47 @@ public class Aluno extends Pessoa   {
                 System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
                 break;
         }
-        while (opcao != 0)
-            ;
 
-        menuAluno.close();
+        }while(opcao != 0);
+        
+        
+        
+            
+
 
     }
 
-
     // Métodos do Menu aluno
 
-    public static void mostrarBoletim(Aluno aluno) {
-        
+    public static void mostrarBoletim() {
+
+        Scanner scanner = new Scanner(System.in);
+        String nomedigitado;
+        System.out.println("Insira o nome do aluno: ");
+        nomedigitado = scanner.nextLine();
         for (Nota n : Nota.notas) {
-            if (n.getAluno().getNome().equals(aluno.getNome())) {
+            if (n.getAluno().getNome().equals(nomedigitado)) {
                 System.out.println("Disciplina:" + n.getDisciplina().getNome() + " nota: " + n.getValor());
 
             }
         }
     }
 
-    public static void mostrarDados(Aluno aluno){
+    public static void mostrarDados() {
+        Scanner scanner = new Scanner(System.in);
+        String nomedigitado;
+        System.out.println("Insira o nome do aluno: ");
+        nomedigitado = scanner.nextLine();
 
-        for (Aluno a : Aluno.alunos) {
-            if (a.getNome().equals(aluno.getNome())) {
-                System.out.println("Nome: " + a.getNome() + " Cpf: " + a.getCpf()+ " Matricula: "+ a.getMatricula() +" Turno: "+ a.getTurno() + " Turma: " + a.getTurma() + " Login: " + a.getLogin() + " Senha: " + a.getSenha());
+        for (Aluno p : Aluno.alunos) {
+            if (p.getNome().equals(nomedigitado)) {
+                System.out.println("Nome: " +p .getNome() + " Cpf: " + p.getCpf() + " Matricula: " + p.getMatricula()
+                        + " Turno: " +p .getTurno() + " Turma: " + p.getTurma() + " Login: " + p.getLogin() + " Senha: "
+                        + p.getSenha());
 
             }
         }
+        scanner.close();
     }
 
-        
 }

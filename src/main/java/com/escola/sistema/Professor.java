@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 public class Professor extends Pessoa {
     private String materia;
-    
+
     private String login;
     private String senha;
-    
+
     public static List<Professor> professores = new ArrayList<>();
 
     // Construtor professor
     public Professor(String materia, String nome, String cpf) {
-        super(nome,cpf);
+        super(nome, cpf);
         this.materia = materia;
         this.nome = nome;
         this.cpf = cpf;
@@ -89,8 +89,6 @@ public class Professor extends Pessoa {
         do {
             System.out.println("MENU PROFESSOR:");
             System.out.println("1. Adicionar nota");
-            System.out.println("2. Remover conceito");
-            System.out.println("3. Ver notas");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = menuProfessor.nextInt();
@@ -99,11 +97,7 @@ public class Professor extends Pessoa {
                 case 1:
                     Nota.adicionarNota();
                     break;
-                case 2:
-                    break;
-                case 3:
-                    
-                    break;
+        
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -115,7 +109,5 @@ public class Professor extends Pessoa {
 
         menuProfessor.close();
     }
-    //Login
-     //Login
-          
+
 }

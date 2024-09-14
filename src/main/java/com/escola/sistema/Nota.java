@@ -2,6 +2,7 @@ package com.escola.sistema;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Nota {
     private Disciplina disciplina;
@@ -42,7 +43,7 @@ public class Nota {
     }
 
     public static void adicionarNota(){
-
+      
     }
 
     public static void alimentaNota(){
