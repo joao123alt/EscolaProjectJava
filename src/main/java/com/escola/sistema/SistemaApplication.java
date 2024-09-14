@@ -41,7 +41,7 @@ public class SistemaApplication {
                     Professor.menuProfessor();
 
                     break;
-                case 3:
+                case 0:
                     System.out.println("Saindo...");
 
                     break;
@@ -52,6 +52,5 @@ public class SistemaApplication {
 
             }
         } while (opcao != 0);
-
-    }    
+        sc.close();    }    
 }

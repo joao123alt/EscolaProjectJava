@@ -69,14 +69,7 @@ public class Professor extends Pessoa {
         System.out.println("Nome: " + professor.getMateria());
     }
 
-    public static void mostrarProfessores() {
-
-        System.out.println("==========LISTA DE ALUNOS MATRICULADOS==========");
-        for (Professor p : professores) {
-            System.out.println(p.getInfo());
-        }
-
-    }
+    
 
     public String getInfo() {
         return "Nome: " + getNome() + ", Cpf: " + getCpf() + ", Matéria: " + getMateria();

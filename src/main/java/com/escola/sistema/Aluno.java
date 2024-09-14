@@ -204,8 +204,9 @@ public class Aluno extends Pessoa {
     // Métodos Aluno menu
     public static void menuAluno() {
         int opcao;
+        Scanner menuAluno = new Scanner(System.in);
+
         do{
-            Scanner menuAluno = new Scanner(System.in);
         System.out.println("MENU ALUNO:");
 
         System.out.println("1. Ver notas");
@@ -240,7 +241,7 @@ public class Aluno extends Pessoa {
         }
 
         }while(opcao != 0);
-        
+        menuAluno.close();
         
         
             
@@ -278,7 +279,6 @@ public class Aluno extends Pessoa {
 
             }
         }
-        scanner.close();
     }
 
 }
