@@ -38,34 +38,7 @@ import java.util.Scanner;
 
         //Métodos da classe
 
-        public static void adicionarDisciplina(){
-            //Requisições ao usuario
-                    Scanner scannerdisciplina = new Scanner(System.in);
-                    System.out.println("==========ADICIONAR DISCIPLINA==========");
-                    System.out.print("Digite o nome da disciplina: "); 
-                    String nomedisciplina = scannerdisciplina.nextLine();
-                    System.out.print("Digite o nome do professor: "); 
-                    String professordisciplina = scannerdisciplina.nextLine();                    
-                        //Instncia um novo professor
-                
-                    Disciplina disciplina = new Disciplina(nomedisciplina, professordisciplina);
-                    disciplinas.add(disciplina);
-                    //Confirma
-                    System.out.println("Disciplina Adicionada com sucesso!");
-                    System.out.println("CPF: " + disciplina.getNome());
-                    System.out.println("Nome: " + disciplina.getProfessor());
-        }
-        public static void mostrarDisciplinas(){
-       
-            System.out.println("==========LISTA DE ALUNOS MATRICULADOS==========");
-            for (Disciplina d: disciplinas) {
-                System.out.println(d.getInfo());
-            }
-        
-    }
-        public String getInfo(){
-        return "Nome: " + getNome() + ", Cpf: " + getProfessor() ;
-    }     
+
     public static void alimentaDisciplina() {
         Disciplina disciplina = new Disciplina("Geografia", "Arnaldo");
         Disciplina disciplina2 = new Disciplina("Matematica", "Rodolfo");

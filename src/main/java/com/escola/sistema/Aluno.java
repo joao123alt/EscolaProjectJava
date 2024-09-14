@@ -68,12 +68,7 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
     }
 
-    public void imprimeFicha() {
-        System.out.println(this.nome);
-        System.out.println(this.cpf);
-    }
-
-    public Turno getTurno() {
+     public Turno getTurno() {
         return turno;
     }
 
@@ -174,22 +169,6 @@ public class Aluno extends Pessoa {
                 + ", Turma: " + turma;
     }
 
-    // Voltar pra terminar Remover aluno
-    public static void removerAluno() {
-        for (int i = 0; i < alunos.size(); i++) {
-            Pessoa p = alunos.get(i);
-
-            if (p.getNome().equals("Pedro")) // Provavel uso em busca por aluno, dps
-
-            {
-
-                alunos.remove(p);
-
-                break;
-            }
-        }
-
-    }
 
     public static void alimentaAluno() {
         Aluno aluno = new Aluno("Joao", "1111111111", "001", Turno.MANHA, Turma.TURMA1, "1234");

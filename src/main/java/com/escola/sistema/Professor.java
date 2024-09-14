@@ -45,36 +45,6 @@ public class Professor extends Pessoa {
         this.materia = materia;
     }
     // Métodos da Classe
-
-    public static void contratarProfessor() {
-        // Requisições ao usuario
-        Scanner scannerprofessor = new Scanner(System.in);
-        System.out.println("==========PROCESSO DE CONTRATAÇÃO==========");
-        System.out.print("Digite o CPF do professor: ");
-        String cpfprocessor = scannerprofessor.nextLine();
-        System.out.print("Digite o nome do professor: ");
-        String nomeprofessor = scannerprofessor.nextLine();
-        System.out.print("Digite a materia do professor: ");
-        String materiaprofessor = scannerprofessor.nextLine();
-
-        // Instncia um novo professor
-        Professor professor = new Professor(cpfprocessor, nomeprofessor, materiaprofessor);
-        professores.add(professor);
-
-        // Confirma que deu certo
-
-        System.out.println("Professor contratado com sucesso!");
-        System.out.println("CPF: " + professor.getCpf());
-        System.out.println("Nome: " + professor.getNome());
-        System.out.println("Nome: " + professor.getMateria());
-    }
-
-    
-
-    public String getInfo() {
-        return "Nome: " + getNome() + ", Cpf: " + getCpf() + ", Matéria: " + getMateria();
-    }
-
     public static void menuProfessor() {
         Scanner menuProfessor = new Scanner(System.in);
         int opcao;
@@ -83,7 +53,8 @@ public class Professor extends Pessoa {
             System.out.println("MENU PROFESSOR:");
             System.out.println("1. Adicionar nota");
             System.out.println("2. Adicionar aluno");
-            System.out.println("3. Voltar ");
+            System.out.println("3. Voltar");
+            System.out.println("4. Mostrar alunos");
 
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
@@ -97,12 +68,15 @@ public class Professor extends Pessoa {
                     Aluno.matricularAluno();
                     break;
                 case 3:
-                System.out.println("-Voltando... ");
-                SistemaApplication.menuPrincipal();
-                break;
+                    System.out.println("-Voltando... ");
+                    SistemaApplication.menuPrincipal();
+                    break;
+                case 4:
+                    Aluno.mostrarAlunos();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
-                    
+
                     break;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
